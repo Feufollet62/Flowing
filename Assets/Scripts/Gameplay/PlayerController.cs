@@ -85,6 +85,7 @@ namespace Gameplay
         #region Custom Functions
 
         // https://youtu.be/5tOOstXaIKE
+        // Maybe apply sensitivity here ?
         public void OnMovement(InputAction.CallbackContext context)
         {
             if (_isControllable)
@@ -98,16 +99,42 @@ namespace Gameplay
             }
         }
 
-        public void OnLook(InputAction.CallbackContext context)
+        public void OnLookController(InputAction.CallbackContext context)
         {
             if (_isControllable)
             {
-                Vector2 rawInput = context.ReadValue<Vector2>(); // Please test this on a controller
+                Vector2 rawInput = context.ReadValue<Vector2>(); // Please test this
                 _inputLook = rawInput;
             }
             else
             {
                 _inputLook = Vector2.zero;
+            }
+        }
+
+        public void OnLookMouseX(InputAction.CallbackContext context)
+        {
+            if (_isControllable)
+            {
+                float rawInput = context.ReadValue<float>();
+                _inputLook.x = rawInput;
+            }
+            else
+            {
+                _inputLook.x = 0f;
+            }
+        }
+        
+        public void OnLookMouseY(InputAction.CallbackContext context)
+        {
+            if (_isControllable)
+            {
+                float rawInput = context.ReadValue<float>();
+                _inputLook.y = rawInput;
+            }
+            else
+            {
+                _inputLook.y = 0f;
             }
         }
 
@@ -123,6 +150,8 @@ namespace Gameplay
 
         private void Look()
         {
+            print(_inputLook.ToString("f3"));
+            
             // Camera rotation
             Quaternion camRotation = _cam.transform.rotation;
             
