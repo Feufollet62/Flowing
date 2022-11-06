@@ -706,7 +706,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8feccfe950f1fa2408b510da83787ff1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sensitivity: 2
+  sensitivity: 0.2
   fov: 90
   accelerationMax: 30
   accelAirMultiplier: 0.3

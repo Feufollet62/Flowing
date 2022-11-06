@@ -99,6 +99,7 @@ namespace Gameplay
             }
         }
 
+        // Have to do look this way because mouse delta as a vector2 is broken... thanks Unity
         public void OnLookController(InputAction.CallbackContext context)
         {
             if (_isControllable)
